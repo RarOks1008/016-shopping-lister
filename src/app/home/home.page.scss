@@ -1,0 +1,37 @@
+ion-title {
+  text-align: center;
+  color: white;
+}
+
+.header_toolbar {
+  --background: #777777; 
+}
+
+.inheader {
+  top: -56px;
+
+  ion-fab-button {
+    --background: transparent;
+    --border-color: none;
+    --box-shadow: none;
+  }
+}
+
+ion-item {
+  margin: 20px;
+  border: 1px solid black;
+}
+
+ion-input{
+  --background: white;
+  border: solid 1px black;
+  padding: 5px;
+  width: 80%;
+  margin: 10px  auto;
+}
+
+ion-button {
+  --background: #777777;
+  width: 80%;
+  margin-left: 10%;
+}
