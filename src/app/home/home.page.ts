@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ShoppingListService } from '../services/shopping-list.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public products;
 
-  constructor() {}
+  constructor(private productService: ShoppingListService) {}
 
   public delete() {
-    console.log("I should delete on this click.");
+    if (!this.products) return;
+    if (!this.products.products) return;
+    for (var i = 0; i < this.products.products.length; i++) {
+      if (this.products.products[i].isChecked) {
+        this.products.products.splice(i, 1);
+        i--;
+      }
+    }
+  }
+
+  ngOnInit() {
+    this.productService.getProducts().subscribe(res => this.products = res);
   }
 }

@@ -12,55 +12,14 @@
       <ion-icon name="trash"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-list lines="none">
-    <ion-item>
+
+  <ion-list lines="none" *ngIf="products && products.products">
+    <ion-item *ngFor="let product of products.products">
       <ion-thumbnail slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+        <img [src]="product.imageURL || 'assets/data/fallback.png'"/>
       </ion-thumbnail>
-      <ion-label>Input</ion-label>
-      <ion-checkbox slot="end"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-thumbnail>
-      <ion-label>Toggle</ion-label>
-      <ion-checkbox slot="end"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-thumbnail>
-      <ion-label>Radio</ion-label>
-      <ion-checkbox slot="end"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-thumbnail>
-      <ion-label>Checkbox</ion-label>
-      <ion-checkbox slot="end"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-thumbnail>
-      <ion-label>Checkbox</ion-label>
-      <ion-checkbox slot="end"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-thumbnail>
-      <ion-label>Checkbox</ion-label>
-      <ion-checkbox slot="end"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-      </ion-thumbnail>
-      <ion-label>Checkbox</ion-label>
-      <ion-checkbox slot="end"></ion-checkbox>
+      <ion-label>{{product.title}}</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="product.isChecked"></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content>
