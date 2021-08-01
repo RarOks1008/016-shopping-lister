@@ -8,6 +8,7 @@ import { ShoppingListService } from '../services/shopping-list.service';
 })
 export class HomePage {
   public products;
+  public title = '';
 
   constructor(private productService: ShoppingListService) {}
 
@@ -20,6 +21,16 @@ export class HomePage {
         i--;
       }
     }
+  }
+
+  public addToList() {
+    // if (!this.title) return;
+    var last_id = 0;
+    this.products.products.forEach(pr => {
+      const current_id = parseInt(pr.id.substring(1));
+      if (current_id > last_id) last_id = current_id;
+    });
+    console.log(last_id);
   }
 
   ngOnInit() {

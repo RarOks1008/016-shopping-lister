@@ -26,9 +26,7 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-input placeholder="Product Name" clearInput value="povezi value sa ts"></ion-input>
-    <ion-button>
-      Add To List
-    </ion-button>
+    <ion-input placeholder="Product Name" clearInput [(ngModel)]="title"></ion-input>
+    <ion-button (click)="addToList()">Add To List</ion-button>
   </ion-toolbar>
 </ion-footer>
