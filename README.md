@@ -49,3 +49,16 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 - set the **Package ID**
 - run the device with the command `ionic capacitor copy android`
 - in Android Studio hit the Run button and select the device
+- live reload command: `ionic capacitor run android -l --host=YOUR_IP_ADDRESS`
+
+### Developing in iOS
+
+- download and install **Xcode**
+- make sure that the command line tools are selected for use: `xcode-select --install`
+- create an iOS Simulator
+- generate the project with the command `ionic capacitor add ios`
+- set the **Package ID**
+- open the project with the command: `ionic capacitor open ios`
+- copy the assets into the native project with the command `ionic capacitor copy ios`
+- in Xcode select the target simulator and hit play button
+- live reload command: `ionic capacitor run ios -l --external`
