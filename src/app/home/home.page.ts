@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ShoppingListService } from '../services/shopping-list.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,13 @@ export class HomePage {
   public products;
   public title = '';
 
-  constructor(private productService: ShoppingListService) {}
+  constructor(private productService: ShoppingListService, public alertController: AlertController) {}
 
   public delete() {
+    this.deleteConfirm();
+  }
+
+  private delete_products() {
     if (!this.products) return;
     if (!this.products.products) return;
     for (var i = 0; i < this.products.products.length; i++) {
@@ -21,6 +26,28 @@ export class HomePage {
         i--;
       }
     }
+  }
+
+  async deleteConfirm() {
+    const alert = await this.alertController.create({
+      cssClass: 'this_dialog',
+      header: 'Are you sure?',
+      message: 'Are you sure you want to delete this items?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.delete_products();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   public addToList() {
